@@ -4,3 +4,6 @@
 Notice:
 Practically I never work this way, but rather use MVVM,Dagger2,Databinding,Retrofite,RxJava..
 But the project here requires the task to be accomplished regardless of the evidence.
+________________________________
+I am trying to call Bucket now, but she is unfamiliar to me ..
+I'm looking for how to get data from it, and try it out
