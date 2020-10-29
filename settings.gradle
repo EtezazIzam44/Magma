@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name = "assessment_task_magma"

@@ -1,0 +1,111 @@
+plugins {
+    id 'org.greenrobot.greendao'
+    id 'com.android.application'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "com.etezaz.assessment_task_magma"
+        minSdkVersion 17
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    //greendao
+    greendao{
+        schemaVersion 1
+        daoPackage'com.etezaz.assessment_task_magma.db.dao'
+        targetGenDir'src/main/java'
+
+    }
+
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    implementation 'org.mongodb:mongo-java-driver:3.12.7'
+
+    //GreenDao
+    implementation 'org.greenrobot:greendao:3.3.0'
+
+    //Zoom Image
+    implementation 'com.github.chrisbanes.photoview:library:1.2.4'
+
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.2.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.2.0'
+
+    //region Test API
+
+    implementation 'com.google.apis:google-api-services-storage:v1-rev171-1.25.0'
+
+    // BEGIN Google APIs
+    // Play Services will validate the application prior to allowing OAuth2 access.
+    implementation 'com.google.android.gms:play-services-auth:16.0.0'
+    implementation 'com.google.android.gms:play-services-identity:16.0.0'
+    // The following lines implement maven imports as defined at:
+    // https://github.com/googleapis/google-api-java-client/wiki/Setup-Instructions
+    // Add the Google API client library.
+    implementation('com.google.api-client:google-api-client:1.28.0') {
+        // Exclude artifacts that the Android SDK/Runtime provides.
+        exclude(group: 'xpp3', module: 'xpp3')
+        exclude(group: 'org.apache.httpcomponents', module: 'httpclient')
+        exclude(group: 'junit', module: 'junit')
+        exclude(group: 'com.google.android', module: 'android')
+    }
+    // Add the Android extensions for the Google API client library.
+    // This will automatically include play services as long as you have download that library
+    // from the Android SDK manager.
+    // Add the Android extensions for the Google API client library.
+    implementation(group: 'com.google.api-client', name: 'google-api-client-android', version: '1.25.0') {
+        // Exclude play services, since we're not using this yet.
+        exclude(group: 'com.google.android.gms:play-services', module: 'google-play-services')
+    }
+    // END Google APIs
+    // The following client libraries make HTTP/JSON on Android easier.
+    // Android extensions for Google HTTP Client.
+    implementation('com.google.http-client:google-http-client-android:1.21.0') {
+        exclude(group: 'com.google.android', module: 'android')
+    }
+    implementation 'com.google.http-client:google-http-client-gson:1.21.0'
+    // This is used by the Google HTTP client library.
+    implementation 'com.google.guava:guava:18.0+'
+    implementation files('libs/echo-v1-1.25.0-SNAPSHOT.jar')
+
+    // Import the BoM for the Firebase platform
+    implementation platform('com.google.firebase:firebase-bom:26.0.0')
+
+    // Declare the dependency for the Cloud Storage library
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation 'com.google.firebase:firebase-storage'
+
+    // Declare the dependency for the Firebase Authentication library
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation 'com.google.firebase:firebase-auth'
+
+    //endregion
+}
