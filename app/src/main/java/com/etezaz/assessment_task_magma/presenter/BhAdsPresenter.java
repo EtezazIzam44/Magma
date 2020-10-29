@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.etezaz.assessment_task_magma.db.dao.DaoMaster;
 import com.etezaz.assessment_task_magma.model.modelHelper.BhAdsModel;
-import com.etezaz.assessment_task_magma.model.modelHelper.db.table.BhAdsImageStatus;
+import com.etezaz.assessment_task_magma.model.db.table.BhAdsImageStatus;
 import com.etezaz.assessment_task_magma.view.BhAdsView;
 
 import java.util.List;

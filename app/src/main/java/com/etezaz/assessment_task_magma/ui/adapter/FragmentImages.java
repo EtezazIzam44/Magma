@@ -1,15 +1,13 @@
 package com.etezaz.assessment_task_magma.ui.adapter;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.etezaz.assessment_task_magma.R;
-import com.etezaz.assessment_task_magma.model.modelHelper.db.table.BhAdsImageStatus;
+import com.etezaz.assessment_task_magma.model.db.table.BhAdsImageStatus;
 import com.etezaz.assessment_task_magma.presenter.BhAdsPresenter;
 import com.etezaz.assessment_task_magma.view.BhAdsView;
 import com.etezaz.assessment_task_magma.view.OnItemClickListener;

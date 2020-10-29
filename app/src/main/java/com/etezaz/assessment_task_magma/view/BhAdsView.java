@@ -1,7 +1,7 @@
 package com.etezaz.assessment_task_magma.view;
 
 
-import com.etezaz.assessment_task_magma.model.modelHelper.db.table.BhAdsImageStatus;
+import com.etezaz.assessment_task_magma.model.db.table.BhAdsImageStatus;
 
 import java.util.List;
 

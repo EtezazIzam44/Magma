@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.etezaz.assessment_task_magma.db.dao.BhAdsImageStatusDao;
 import com.etezaz.assessment_task_magma.db.dao.DaoMaster;
 import com.etezaz.assessment_task_magma.db.dao.DaoSession;
-import com.etezaz.assessment_task_magma.model.modelHelper.db.table.BhAdsImageStatus;
+import com.etezaz.assessment_task_magma.model.db.table.BhAdsImageStatus;
 
 import java.util.List;
 

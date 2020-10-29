@@ -1,4 +1,4 @@
-package com.etezaz.assessment_task_magma.model.modelHelper.db.table;
+package com.etezaz.assessment_task_magma.model.db.table;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
