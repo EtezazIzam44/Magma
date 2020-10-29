@@ -92,9 +92,6 @@ dependencies {
         exclude(group: 'com.google.android', module: 'android')
     }
     implementation 'com.google.http-client:google-http-client-gson:1.21.0'
-    // This is used by the Google HTTP client library.
-    implementation 'com.google.guava:guava:18.0+'
-    implementation files('libs/echo-v1-1.25.0-SNAPSHOT.jar')
 
     // Import the BoM for the Firebase platform
     implementation platform('com.google.firebase:firebase-bom:26.0.0')
