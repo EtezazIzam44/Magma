@@ -1,4 +1,4 @@
-package com.etezaz.assessment_task_magma.ui.adapter;
+package com.etezaz.assessment_task_magma.zoom;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,7 +17,7 @@ import androidx.fragment.app.Fragment;
  * Automata4Group
  * etezazizam44@gmail.com
  */
-class FragmentZoom  extends Fragment {
+public class FragmentZoom  extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

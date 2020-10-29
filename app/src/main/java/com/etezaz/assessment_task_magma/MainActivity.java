@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                 .replace(R.id.linear_layout, new FragmentImages())
                 .commit();
 
-       // FirebaseStorage storage = FirebaseStorage.getInstance();
+        FirebaseStorage storage = FirebaseStorage.getInstance();
 
 
      /*   try {
