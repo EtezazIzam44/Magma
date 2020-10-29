@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
  * Automata4Group
  * etezazizam44@gmail.com
  */
-class imagesResponse {
+public class imagesResponse {
 
     private int id;
     @SerializedName("adURL")

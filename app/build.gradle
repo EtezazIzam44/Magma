@@ -14,6 +14,8 @@ android {
         versionCode 1
         versionName "1.0"
 
+        multiDexEnabled true //add this line
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -26,6 +28,10 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
     }
 
     //greendao
@@ -64,9 +70,6 @@ dependencies {
     implementation 'com.google.apis:google-api-services-storage:v1-rev171-1.25.0'
 
     // BEGIN Google APIs
-    // Play Services will validate the application prior to allowing OAuth2 access.
-    implementation 'com.google.android.gms:play-services-auth:16.0.0'
-    implementation 'com.google.android.gms:play-services-identity:16.0.0'
     // The following lines implement maven imports as defined at:
     // https://github.com/googleapis/google-api-java-client/wiki/Setup-Instructions
     // Add the Google API client library.
@@ -85,13 +88,13 @@ dependencies {
         // Exclude play services, since we're not using this yet.
         exclude(group: 'com.google.android.gms:play-services', module: 'google-play-services')
     }
-    // END Google APIs
-    // The following client libraries make HTTP/JSON on Android easier.
-    // Android extensions for Google HTTP Client.
-    implementation('com.google.http-client:google-http-client-android:1.21.0') {
-        exclude(group: 'com.google.android', module: 'android')
-    }
-    implementation 'com.google.http-client:google-http-client-gson:1.21.0'
+
+    //Retrofite
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
+    // implementation 'com.squareup.okhttp3:okhttp:3.10.0'
 
     // Import the BoM for the Firebase platform
     implementation platform('com.google.firebase:firebase-bom:26.0.0')
@@ -105,4 +108,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth'
 
     //endregion
+
+    // ENABLE MULTI DEX
+    implementation 'androidx.multidex:multidex:2.0.1'
+
 }
