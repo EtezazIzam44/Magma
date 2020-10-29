@@ -7,3 +7,7 @@ But the project here requires the task to be accomplished regardless of the evid
 ________________________________
 I am trying to call Bucket now, but she is unfamiliar to me ..
 I'm looking for how to get data from it, and try it out
+________________________________________________
+I cannot complete .. I need the file path to read ..
+All the articles and examples I have read contain the path ... which I do not have ..
+Either I got the required wrong, or there is incomplete information!
