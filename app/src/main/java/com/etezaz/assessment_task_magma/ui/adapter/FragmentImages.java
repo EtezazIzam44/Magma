@@ -217,9 +217,18 @@ public class FragmentImages extends Fragment implements BhAdsView {
             System.out.println(bucket.toString());
         }
 
-      /*  String bucketName="waseet-ads-images-bh";
+        
+        String bucketName="waseet-ads-images-bh";
 
-       *//* FileInputStream serviceAccount = new FileInputStream("app/google-services.json");
+        FirebaseOptions options = new FirebaseOptions.Builder()
+                .setCredentials(credentials)
+                .setStorageBucket(bucketName+".appspot.com")
+                .build();
+        FirebaseApp.initializeApp(options);
+
+        Bucket bucket = StorageClient.getInstance().bucket();
+
+        /* FileInputStream serviceAccount = new FileInputStream("app/google-services.json");
        // FileInputStream serviceAccount = new FileInputStream("path/to/serviceAccountKey.json");
 
         FirebaseOptions options = new FirebaseOptions.Builder()
