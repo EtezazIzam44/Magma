@@ -1,5 +1,8 @@
 package com.etezaz.assessment_task_magma.ui.adapter;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,17 +16,25 @@ import com.etezaz.assessment_task_magma.presenter.BhAdsPresenter;
 import com.etezaz.assessment_task_magma.view.BhAdsView;
 import com.etezaz.assessment_task_magma.view.OnItemClickListener;
 import com.etezaz.assessment_task_magma.zoom.FragmentZoom;
+import com.google.api.gax.paging.Page;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.storage.Bucket;
+import com.google.cloud.storage.Storage;
+import com.google.cloud.storage.StorageOptions;
+import com.google.common.collect.Lists;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.cloud.StorageClient;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -56,11 +67,37 @@ public class FragmentImages extends Fragment implements BhAdsView {
 
         //region Firebase
 
-        try {
-            initializeAppForStorage();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        //authImplicit();
+
+//        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+//            // Permission is not granted
+//            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
+//                    Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+//                // Show an explanation to the user *asynchronously* -- don't block
+//                // this thread waiting for the user's response! After the user
+//                // sees the explanation, try again to request the permission.
+//            } else {
+//                // No explanation needed; request the permission
+//                ActivityCompat.requestPermissions(getActivity(),
+//                        new String[] {
+//                                Manifest.permission.WRITE_EXTERNAL_STORAGE
+//                        },
+//                        MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE);
+//            }
+//        }
+
+        new Thread(new Runnable(){
+            @Override
+            public void run() {
+                try {
+                    initializeAppForStorage();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+
+
 
         String bucketName="waseet-ads-images-bh";
 
@@ -150,18 +187,51 @@ public class FragmentImages extends Fragment implements BhAdsView {
         });
     }
 
+     void authImplicit() {
+        // If you don't specify credentials when constructing the client, the client library will
+        // look for credentials via the environment variable GOOGLE_APPLICATION_CREDENTIALS.
+        Storage storage = StorageOptions.getDefaultInstance().getService();
+
+        System.out.println("Buckets:");
+        Page<Bucket> buckets = storage.list();
+        for (Bucket bucket : buckets.iterateAll()) {
+            System.out.println(bucket.toString());
+        }
+    }
+
     public void initializeAppForStorage() throws IOException {
         // [START init_admin_sdk_for_storage]
 
-        String bucketName="waseet-ads-images-bh";
+        // You can specify a credential file by providing a path to GoogleCredentials.
+        // Otherwise credentials are read from the GOOGLE_APPLICATION_CREDENTIALS environment variable.
+     //   Uri uri = Uri.fromFile(new File("//assets/google-services.json"));
+        InputStream is = getActivity().getAssets().open("google-services.json");
 
-        FileInputStream serviceAccount = new FileInputStream("app/google-services.json");
+        GoogleCredentials credentials = GoogleCredentials.fromStream(is)
+                .createScoped(Lists.newArrayList("https://www.googleapis.com/auth/cloud-platform"));
+        Storage storage = StorageOptions.newBuilder().setCredentials(credentials).build().getService();
+
+        System.out.println("Buckets:");
+        Page<Bucket> buckets = storage.list();
+        for (Bucket bucket : buckets.iterateAll()) {
+            System.out.println(bucket.toString());
+        }
+
+      /*  String bucketName="waseet-ads-images-bh";
+
+       *//* FileInputStream serviceAccount = new FileInputStream("app/google-services.json");
        // FileInputStream serviceAccount = new FileInputStream("path/to/serviceAccountKey.json");
 
         FirebaseOptions options = new FirebaseOptions.Builder()
                 .setCredentials(GoogleCredentials.fromStream(serviceAccount))
                 .setStorageBucket(bucketName+".appspot.com")
+                .build();*//*
+
+        FirebaseOptions options = FirebaseOptions.builder()
+                .setCredentials(GoogleCredentials.getApplicationDefault())
+                .setDatabaseUrl(bucketName+".appspot.com")
                 .build();
+
         FirebaseApp.initializeApp(options);
 
         Bucket bucket = StorageClient.getInstance().bucket();
@@ -170,7 +240,7 @@ public class FragmentImages extends Fragment implements BhAdsView {
         // See http://googlecloudplatform.github.io/google-cloud-java/latest/apidocs/com/google/cloud/storage/Bucket.html
         // for more details.
         // [END init_admin_sdk_for_storage]
-        System.out.println("Retrieved bucket: " + bucket.getName());
+        System.out.println("Retrieved bucket: " + bucket.getName());*/
     }
 
 }
