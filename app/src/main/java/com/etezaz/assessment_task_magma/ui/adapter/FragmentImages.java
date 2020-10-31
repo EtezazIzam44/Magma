@@ -49,10 +49,10 @@ public class FragmentImages extends Fragment implements BhAdsView {
         reject=view.findViewById(R.id.btn_rejected);
         recyclerView = view.findViewById(R.id.recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.HORIZONTAL,false));
-        recyclerView.setLayoutFrozen(true);
+       /* recyclerView.setLayoutFrozen(true);
         imagesPresenter = new BhAdsPresenter(this, getContext());
 
-        imagesPresenter.getAllBhAdsImageStatus();
+        imagesPresenter.getAllBhAdsImageStatus();*/
 
         //region Firebase
 
