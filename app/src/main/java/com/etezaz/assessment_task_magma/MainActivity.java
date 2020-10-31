@@ -9,23 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 
 import com.etezaz.assessment_task_magma.ui.adapter.FragmentImages;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.ListResult;
-import com.google.firebase.storage.StorageReference;
-import com.mongodb.DB;
-import com.mongodb.MongoClient;
-import com.mongodb.MongoClientOptions;
-import com.mongodb.MongoClientURI;
-
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.FutureTask;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -38,9 +21,6 @@ public class MainActivity extends AppCompatActivity {
                 .beginTransaction()
                 .replace(R.id.linear_layout, new FragmentImages())
                 .commit();
-
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-
 
      /*   try {
             //MongoClient mongoClient = new MongoClient("10.1.1.1", 27017);//new MongoClient("mongodb://10.1.1.1:27017");
@@ -66,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
     }*/
     }
 
-    public void listAllPaginated(@Nullable String pageToken) {
+  /*  public void listAllPaginated(@Nullable String pageToken) {
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference listRef = storage.getReference().child("files/uid");
 
@@ -97,5 +77,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
+*/
 }
