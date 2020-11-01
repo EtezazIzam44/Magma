@@ -27,12 +27,17 @@ public class BhAdsPresenter {
         this.bhAdsView=bhAdsView;
     }
 
-    public void getAllBhAdsImageStatus(){
+    public int getAllBhAdsImageStatus(int status){
 
         BhAdsModel bhAdsModel = new BhAdsModel(openHelper);
-        List<BhAdsImageStatus> bhAdsList = bhAdsModel.getAllBhAdsImageStatus();
-        bhAdsView.displayImages(bhAdsList);
+        return bhAdsModel.getAllBhAdsImageStatus(status);
 
+    }
+
+    public void insertBhAdsImageStatusToDB(BhAdsImageStatus bhAdsImageStatus){
+
+        BhAdsModel bhAdsModel = new BhAdsModel(openHelper);
+        bhAdsModel.insertBhAdsImageStatusToDB(bhAdsImageStatus);
     }
 
 }

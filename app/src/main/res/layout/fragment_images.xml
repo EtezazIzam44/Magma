@@ -11,6 +11,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/remaining"
+        android:layout_marginTop="10dp"
+        android:textSize="@dimen/txtv_title"
         app:layout_constraintBottom_toTopOf="@+id/images"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/done"
@@ -21,6 +23,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/done"
+        android:layout_marginTop="10dp"
+        android:textSize="@dimen/txtv_title"
         app:layout_constraintBottom_toTopOf="@+id/images"
         app:layout_constraintStart_toEndOf="@+id/txtv_remaining"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,41 +35,50 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/images"
+        android:gravity="center"
+        android:minLines="2"
+        android:layout_marginTop="10dp"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintBottom_toTopOf="@+id/recycler"
-        app:layout_constraintStart_toEndOf="@+id/txtv_remaining"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/record"
-        app:layout_constraintTop_toBottomOf="@+id/done" />
+        app:layout_constraintTop_toBottomOf="@+id/txtv_remaining" />
 
     <TextView
         android:id="@+id/record"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/done"
-        app:layout_constraintBottom_toTopOf="@+id/recycler"
+        android:text="@string/record"
+        android:minLines="2"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@+id/images"
         app:layout_constraintStart_toEndOf="@+id/images"
         app:layout_constraintEnd_toStartOf="@+id/accepted"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/images" />
 
     <TextView
         android:id="@+id/accepted"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/done"
-        app:layout_constraintBottom_toTopOf="@+id/recycler"
+        android:text="@string/accepted"
+        android:gravity="center"
+        android:minLines="2"
+        app:layout_constraintBottom_toBottomOf="@+id/images"
         app:layout_constraintStart_toEndOf="@+id/record"
         app:layout_constraintEnd_toStartOf="@+id/rejected"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/images" />
 
     <TextView
         android:id="@+id/rejected"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/done"
-        app:layout_constraintBottom_toTopOf="@+id/recycler"
+        android:gravity="center"
+        android:minLines="2"
+        android:text="@string/rejected"
+        app:layout_constraintBottom_toBottomOf="@+id/images"
         app:layout_constraintStart_toEndOf="@+id/accepted"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/images" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"

@@ -8,6 +8,6 @@ import android.view.View;
  * etezazizam44@gmail.com
  */
 public interface OnItemClickListener {
-    void onItemClick(String id, String URL, View v);
+    void onItemClick(String url, String name, View v);
 
 }

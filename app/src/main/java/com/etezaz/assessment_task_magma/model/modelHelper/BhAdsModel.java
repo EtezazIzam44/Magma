@@ -15,24 +15,24 @@ import java.util.List;
  * etezazizam44@gmail.com
  */
 public class BhAdsModel {
-    private BhAdsImageStatusDao notepadDao;
+    private BhAdsImageStatusDao bhAdsImageStatusDao;
 
 
     public BhAdsModel(DaoMaster.DevOpenHelper openHelper) {
         SQLiteDatabase db = openHelper.getWritableDatabase();
         DaoMaster  master = new DaoMaster(db);//create masterDao
         DaoSession daoSession = master.newSession(); //Creates Session session
-        this.notepadDao = daoSession.getBhAdsImageStatusDao();
+        this.bhAdsImageStatusDao = daoSession.getBhAdsImageStatusDao();
     }
 
-    public List<BhAdsImageStatus> getAllBhAdsImageStatus(){
-        return notepadDao.queryBuilder().
-                orderDesc(BhAdsImageStatusDao.Properties.AdCode).build().list();
+    public int getAllBhAdsImageStatus(int status){
+        return bhAdsImageStatusDao.queryBuilder().
+                where(BhAdsImageStatusDao.Properties.ImageStatus.eq(status)).build().list().size();
     }
 
 
-    public void insertBhAdsImageStatusToDB(BhAdsImageStatus notepad){
-        notepadDao.insertOrReplace(notepad);
+    public void insertBhAdsImageStatusToDB(BhAdsImageStatus bhAdsImageStatus){
+        bhAdsImageStatusDao.insertOrReplace(bhAdsImageStatus);
     }
 
 }

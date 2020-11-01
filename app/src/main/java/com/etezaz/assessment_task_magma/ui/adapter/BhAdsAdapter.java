@@ -5,10 +5,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.bumptech.glide.request.RequestOptions;
 import com.etezaz.assessment_task_magma.R;
 import com.etezaz.assessment_task_magma.model.db.table.BhAdsImageStatus;
 import com.etezaz.assessment_task_magma.view.OnItemClickListener;
+import com.google.api.gax.paging.Page;
+import com.google.cloud.storage.Blob;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,7 +27,7 @@ import androidx.recyclerview.widget.RecyclerView;
  */
 class BhAdsAdapter extends RecyclerView.Adapter<BhAdsAdapter.MyViewHolder> {
 
-    private List<BhAdsImageStatus> bhAdsImageList;
+    private ArrayList<List<String>> bhAdsImageList;
 
     private OnItemClickListener onItemClickListener;
 
@@ -28,13 +35,22 @@ class BhAdsAdapter extends RecyclerView.Adapter<BhAdsAdapter.MyViewHolder> {
         this.onItemClickListener = onItemClickListener;
     }
 
-    public BhAdsAdapter(List<BhAdsImageStatus> bhAdsImageList) {
+    public BhAdsAdapter(ArrayList<List<String>> bhAdsImageList) {
         this.bhAdsImageList = bhAdsImageList;
     }
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        BhAdsImageStatus c = bhAdsImageList.get(position);
+        String c = bhAdsImageList.get(position).get(0);
+        RequestOptions options = new RequestOptions();
+        options.diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+                .placeholder(R.drawable.ic_launcher_background);
+
+        Glide
+                .with(holder.imgv.getContext())
+                .load(c)
+                .apply(options)
+                .into(holder.imgv);
     }
 
     @Override
@@ -65,7 +81,7 @@ class BhAdsAdapter extends RecyclerView.Adapter<BhAdsAdapter.MyViewHolder> {
         @Override
         public void onClick(View v) {
             int position=getAdapterPosition();
-            onItemClickListener.onItemClick(bhAdsImageList.get(position).getAdCode(),bhAdsImageList.get(position).getImageUrl(), v);
+            onItemClickListener.onItemClick(bhAdsImageList.get(position).get(0),bhAdsImageList.get(position).get(1), v);
         }
 
 
