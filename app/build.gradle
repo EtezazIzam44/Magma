@@ -55,25 +55,12 @@ android {
         javaMaxHeapSize "4g"
     }
 
-    /*packagingOptions {
-        pickFirst "META-INF/INDEX.LIST"
-        pickFirst "META-INF/io.netty.versions.properties"
-        exclude 'META-INF/DEPENDENCIES'
-        exclude 'META-INF/INDEX.LIST'
-        exclude 'META-INF/proguard/androidx-annotations.pro'
-        exclude 'project.properties'
-        exclude 'META-INF/CHANGES'
-        exclude 'META-INF/LICENSE'
-        exclude 'META-INF/LICENSE.txt'
-        exclude 'META-INF/license.txt'
-        exclude 'META-INF/NOTICE'
-        exclude 'META-INF/NOTICE.txt'
-        exclude 'META-INF/notice.txt'
-        exclude 'META-INF/ASL2.0'
-        pickFirst 'META-INF/kotlinx-io.kotlin_module'
-        pickFirst 'META-INF/atomicfu.kotlin_module'
-        pickFirst 'META-INF/kotlinx-coroutines-io.kotlin_module'
-    }*/
+    configurations {
+        all {
+            exclude module: 'httpclient'
+            exclude module: 'commons-logging'
+        }
+    }
 
     //greendao
     greendao{
@@ -94,7 +81,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-    implementation 'org.mongodb:mongo-java-driver:3.12.7'
+   // implementation 'org.mongodb:mongo-java-driver:3.12.7'
 
     //GreenDao
     implementation 'org.greenrobot:greendao:3.3.0'
