@@ -330,7 +330,7 @@ public class FragmentImages extends Fragment implements BhAdsView, View.OnClickL
             for (Blob blob : blobPage.iterateAll()) {
                 URL signedUrl = blob.signUrl(14, TimeUnit.DAYS);
                 arrayList.add(Arrays.asList(signedUrl.toString(), blob.getName()));
-                System.out.println("blob.getName()"+" "+signedUrl.toString());
+             //   System.out.println("blob.getName()"+" "+signedUrl.toString());
                 publishProgress(null);
               }
 

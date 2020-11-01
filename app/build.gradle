@@ -106,91 +106,11 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 
-    //region Test API
-
-   // implementation 'com.google.apis:google-api-services-storage:v1-rev171-1.25.0'
-
-    // BEGIN Google APIs
-    // The following lines implement maven imports as defined at:
-    // https://github.com/googleapis/google-api-java-client/wiki/Setup-Instructions
-    // Add the Google API client library.
-/*    implementation('com.google.api-client:google-api-client:1.30.10') {
-        // Exclude artifacts that the Android SDK/Runtime provides.
-        exclude(group: 'xpp3', module: 'xpp3')
-        exclude(group: 'org.apache.httpcomponents', module: 'httpclient')
-        exclude(group: 'junit', module: 'junit')
-        exclude(group: 'com.google.android', module: 'android')
-    }
-    // Add the Android extensions for the Google API client library.
-    // This will automatically include play services as long as you have download that library
-    // from the Android SDK manager.
-    // Add the Android extensions for the Google API client library.
-    implementation(group: 'com.google.api-client', name: 'google-api-client-android', version: '1.25.0') {
-        // Exclude play services, since we're not using this yet.
-        exclude(group: 'com.google.android.gms:play-services', module: 'google-play-services')
-    }*/
-
-    //Retrofite
-    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
-    implementation 'com.google.code.gson:gson:2.8.5'
-    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
-    // implementation 'com.squareup.okhttp3:okhttp:3.10.0'
-
-   /* // Import the BoM for the Firebase platform
-    implementation platform('com.google.firebase:firebase-bom:26.0.0')
-
-    // Declare the dependency for the Cloud Storage library
-    // When using the BoM, you don't specify versions in Firebase library dependencies
-    implementation 'com.google.firebase:firebase-storage'
-*/
-    // Declare the dependency for the Firebase Authentication library
-    // When using the BoM, you don't specify versions in Firebase library dependencies
-    //implementation 'com.google.firebase:firebase-auth'
-
-   // implementation 'com.google.cloud:google-cloud-storage:1.113.2'
-
-    //endregion
 
     // ENABLE MULTI DEX
     implementation 'androidx.multidex:multidex:2.0.1'
 
-    // BEGIN Google APIs
-/*    // Play Services will validate the application prior to allowing OAuth2 access.
-    implementation 'com.google.android.gms:play-services-auth:18.1.0'
-    implementation 'com.google.android.gms:play-services-identity:17.0.0'
-    // The following lines implement maven imports as defined at:
-    // https://github.com/googleapis/google-api-java-client/wiki/Setup-Instructions
-    // Add the Google API client library.
-    implementation('com.google.api-client:google-api-client:1.30.11') {
-        // Exclude artifacts that the Android SDK/Runtime provides.
-        exclude(group: 'xpp3', module: 'xpp3')
-        exclude(group: 'org.apache.httpcomponents', module: 'httpclient')
-        exclude(group: 'junit', module: 'junit')
-        exclude(group: 'com.google.android', module: 'android')
-    }
-    // Add the Android extensions for the Google API client library.
-    // This will automatically include play services as long as you have download that library
-    // from the Android SDK manager.
-    // Add the Android extensions for the Google API client library.
-    implementation(group: 'com.google.api-client', name: 'google-api-client-android', version: '1.25.0') {
-        // Exclude play services, since we're not using this yet.
-        exclude(group: 'com.google.android.gms:play-services', module: 'google-play-services')
-    }
-    // END Google APIs
-    // The following client libraries make HTTP/JSON on Android easier.
-    // Android extensions for Google HTTP Client.
-    implementation('com.google.http-client:google-http-client-android:1.25.0') {
-        exclude(group: 'com.google.android', module: 'android')
-    }
-    implementation 'com.google.http-client:google-http-client-gson:1.21.0'*/
-    // This is used by the Google HTTP client library.
-   /* implementation 'com.google.guava:guava:18.0+'
-    implementation files('libs/echo-v1-1.25.0-SNAPSHOT.jar')
-*/
-  //  implementation group: 'com.google.firebase', name: 'firebase-admin', version: '7.0.0'
     implementation 'com.google.firebase:firebase-admin:7.0.1'
- //   implementation 'com.google.guava:guava:30.0-android'
 
 
 }
